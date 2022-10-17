@@ -1,5 +1,5 @@
 #include "qte.h"
-#include <QtWidgets/qapplication.h>
+#include <QApplication>
 
 int main(int argc, char *argv[])
 {
