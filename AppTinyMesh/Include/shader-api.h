@@ -1,13 +1,7 @@
 #ifndef _GLEW_H_INCLUDE
 #define _GLEW_H_INCLUDE
 
-#ifdef WIN32
-    // Variable GLEW_DIR must be set.
-    #include "glew.h"
-#else
-    // When installed, glew is located at usr/include/GL, which is alreay in the PATH environment variable.
-    #include "GL/glew.h"
-#endif
+#include "glew.h"
 
 #include <string>
 #include <QtOpenGLWidgets/QOpenGLWidget>
