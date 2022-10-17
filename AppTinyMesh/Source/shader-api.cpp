@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <iostream>
+
 #include <climits>
 
 #include "realtime.h"
@@ -15,9 +15,9 @@ std::string read(const char* filename)
   std::stringbuf source;
   std::ifstream in(filename);
   if (in.good() == false)
-    std::cout << "[error] loading program " << filename << std::endl;
+    printf("[error] loading program '%s'...\n", filename);
   else
-    std::cout << "loading program " << filename << std::endl;
+    printf("loading program '%s'...\n", filename);
 
   in.get(source, 0);        // lire tout le fichier, le caractere '\0' ne peut pas se trouver dans le source de shader
   return source.str();
@@ -46,7 +46,7 @@ std::string prepare_source(std::string file, const std::string& definitions)
 
       if (file.find("#version") != std::string::npos)
       {
-        std::cout << "[error] found several #version directives. failed.\n";
+        printf("[error] found several #version directives. failed.\n");
         return std::string();
       }
     }
@@ -177,7 +177,7 @@ int reload_program(GLuint program, const char* filename, const char* definitions
       std::string source = prepare_source(common_source, std::string(definitions).append("#define ").append(shader_keys[i]).append("\n"));
       GLuint shader = compile_shader(program, shader_types[i], source);
       if (shader == 0)
-        std::cout << "[error] compiling " << shader_string(shader_types[i]) << " " << definitions;
+        printf("[error] compiling %s...\n%s\n", shader_string(shader_types[i]), definitions);
     }
   }
 
@@ -189,7 +189,7 @@ int reload_program(GLuint program, const char* filename, const char* definitions
   glGetProgramiv(program, GL_LINK_STATUS, &status);
   if (status == GL_FALSE)
   {
-    std::cout << "[error] linking program " << program << ": " << filename;
+    printf("[error] linking program %u '%s'...\n", program, filename);
     return -1;
   }
 
@@ -271,7 +271,7 @@ void print_line(std::string& errors, const char* source, const int begin_id, con
 static
 int print_errors(std::string& errors, const char* log, const char* source)
 {
-  std::cout <<"[error log] " << log << std::endl;
+  printf("[error log]\n%s\n", log);
 
   int first_error = INT_MAX;
   int last_string = -1;
@@ -392,6 +392,6 @@ int program_print_errors(const GLuint program)
   std::string errors;
   int code = program_format_errors(program, errors);
   if (errors.size() > 0)
-    std::cout << errors.c_str() << std::endl;
+    printf("%s\n", errors.c_str());
   return code;
 }
