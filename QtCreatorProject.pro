@@ -28,6 +28,8 @@ HEADERS += \
     AppTinyMesh/Include/box.h \
     AppTinyMesh/Include/camera.h \
     AppTinyMesh/Include/color.h \
+    AppTinyMesh/Include/GL.h \
+    AppTinyMesh/Include/glew.h \
     AppTinyMesh/Include/implicits.h \
     AppTinyMesh/Include/mathematics.h \
     AppTinyMesh/Include/mesh.h \
@@ -39,13 +41,8 @@ HEADERS += \
 FORMS += \
     AppTinyMesh/UI/interface.ui
 
-win32 {
-	LIBS += -L$$(GLEW_DIR) -lglew32
-	LIBS += -lopengl32 -lglu32
-}
-unix {
-	
-}
+LIBS += -L$$(GLEW_DIR) -lglew32
+LIBS += -lopengl32 -lglu32
 
 # Copy shader files
 # $$shell_quote puts quote around the path, to make it work if it contains space or other special characters.
