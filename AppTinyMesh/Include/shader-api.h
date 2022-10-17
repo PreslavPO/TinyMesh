@@ -1,14 +1,11 @@
 #ifndef _GLEW_H_INCLUDE
 #define _GLEW_H_INCLUDE
 
-#ifdef _WIN32
-    // Environment variable GLEW_DIR must be set.
+#ifdef WIN32
+    // Variable GLEW_DIR must be set.
     #include "glew.h"
-#elif __APPLE__
-	// glew path for macOs
-    #include "GL/glew.h"
 #else
-    // When installed on unix (and macOs ?), glew is located at usr/include/GL, which is alreay in the PATH environment variable.
+    // When installed, glew is located at usr/include/GL, which is alreay in the PATH environment variable.
     #include "GL/glew.h"
 #endif
 

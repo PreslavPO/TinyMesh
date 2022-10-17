@@ -43,11 +43,8 @@ win32 {
     LIBS += -L$$(GLEW_DIR) -lglew32
     LIBS += -lopengl32 -lglu32
 }
-unix:!macx {
-    LIBS += -lGLEW -lGL -lGLU
-}
-macx {
-    LIBS += -lGLEW -lGL -lGLU
+unix {
+    LIBS += -lGLEW -lGL -lGLU -lglut
 }
 
 # Copy shader files
