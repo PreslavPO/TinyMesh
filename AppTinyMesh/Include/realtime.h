@@ -169,9 +169,6 @@ public:
   void SetShading(const QString&, MeshShading);
   void SetShadingGlobal(MeshShading);
 
-private:
-  void _InternalGetMouseGlobalPosition(QMouseEvent* e, int& x0, int& y0) const;
-
 protected:
   virtual void initializeGL();
   virtual void resizeGL(int, int);
