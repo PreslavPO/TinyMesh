@@ -6,7 +6,6 @@ CONFIG += c++11
 
 INCLUDEPATH += AppTinyMesh/Include
 INCLUDEPATH += $$(GLEW_DIR)
-INCLUDEPATH += $$(OUT_PWD)
 
 VPATH += AppTinyMesh
 
